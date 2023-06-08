@@ -65,11 +65,6 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC
         $<INSTALL_INTERFACE:include/>
 )
-target_link_directories(${PROJECT_NAME}
-    SYSTEM
-    PUBLIC
-        $<INSTALL_INTERFACE:lib/>
-)
 target_include_directories(${PROJECT_NAME}
     PRIVATE
         # build tree includes need to be added only during build, not install
