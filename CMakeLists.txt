@@ -72,9 +72,9 @@ target_include_directories(${PROJECT_NAME}
         ${EIGEN3_INCLUDE_DIRS}
 )
 if (WITH_PCL)
-    target_include_directories(${PROJECT_NAME} PUBLIC ${PCL_INCLUDE_DIRS})
+    target_include_directories(${PROJECT_NAME} PRIVATE ${PCL_INCLUDE_DIRS})
     target_compile_definitions(${PROJECT_NAME} PRIVATE ${PCL_DEFINITIONS} WITH_PCL)
-    target_link_directories(${PROJECT_NAME} PUBLIC ${PCL_LIBRARY_DIRS})
+    target_link_directories(${PROJECT_NAME} PRIVATE ${PCL_LIBRARY_DIRS})
 endif()
 
 # make eigen, pcl an threads transitive dependencies of dependent projects
