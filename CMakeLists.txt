@@ -61,16 +61,6 @@ endif()
 add_library(${PROJECT_NAME_UPPER}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME}
-    SYSTEM
-    PUBLIC
-        $<INSTALL_INTERFACE:include/>
-)
-target_link_directories(${PROJECT_NAME}
-    SYSTEM
-    PUBLIC
-        $<INSTALL_INTERFACE:lib/>
-)
-target_include_directories(${PROJECT_NAME}
     PRIVATE
         # build tree includes need to be added only during build, not install
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -82,8 +72,8 @@ if (WITH_PCL)
     target_link_directories(${PROJECT_NAME} PRIVATE ${PCL_LIBRARY_DIRS})
 endif()
 
-# make eigen, pcl an threads transitive dependencies of dependent projects
-target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBS})
+# libs are not transitive dependencies here, as thats handled in *.cmake.in
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBS})
 
 include(GNUInstallDirs)
 
