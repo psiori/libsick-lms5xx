@@ -78,7 +78,7 @@ if (WITH_PCL)
 endif()
 
 # make eigen, pcl an threads transitive dependencies of dependent projects
-target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBS})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBS})
 
 include(GNUInstallDirs)
 
